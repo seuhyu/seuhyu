@@ -1,0 +1,17 @@
+from keras.models import Sequential
+from keras.layers import LSTM, Dense
+import numpy as np
+
+# 입력값과 출력값 정의
+input_text = "홍길동은 오늘 수업으로 우리나라의 역사를 배웠습니다."
+output_text = "안녕하세요, 홍길동 학생의 오늘의 알림장입니다."
+
+# 입력값과 출력값을 one-hot 인코딩하여 모델 입력 형태로 변환
+chars = sorted(list(set(input_text + output_text)))
+input_len = len(input_text)
+output_len = len(output_text)
+num_chars = len(chars)
+input_data = np.zeros((1, input_len, num_chars), dtype=np.bool)
+output_data = np.zeros((1, output_len, num_chars), dtype=np.bool)
+for i, char in enumerate(input_text):
+    input_data[0
